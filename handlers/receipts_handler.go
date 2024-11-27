@@ -20,7 +20,7 @@ func SubmitReceipt(c *fiber.Ctx) error {
         return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid receipt format"})
     }
 
-    // Generate a unique ID for the receipt (for simplicity, using length here)
+    // Generate a unique ID for the receipt using UUID
     id := uuid.New().String()
     receiptStore[id] = receipt
     pointsStore[id] = calculatePoints(receipt)
